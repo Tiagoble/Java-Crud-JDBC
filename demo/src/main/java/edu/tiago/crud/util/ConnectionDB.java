@@ -22,6 +22,16 @@ public class ConnectionDB {
         return connection;
     }
 
+    public static void closeConnection(){
+        if(connection != null){
+            try{
+                connection.close();
+            }catch (SQLException e){
+                throw new RuntimeException("Error closing the database connection", e);
+            }
+        }
+    }
+
     private Properties loadProperties() {
         Properties props = new Properties();
         try {
